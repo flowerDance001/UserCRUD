@@ -34,8 +34,7 @@
 		from test_user
 		<where>
 			<if test="realName != null">
-				and user_name LIKE CONCAT('%', CONCAT(#{realName,jdbcType=VARCHAR},
-				'%'))
+				and real_name LIKE #{realName,jdbcType=VARCHAR}
 			</if>
 		</where>
 		
@@ -49,8 +48,7 @@
 		from test_user
 		<where>
 			<if test="realName != null">
-				and user_name LIKE CONCAT('%', CONCAT(#{realName,jdbcType=VARCHAR},
-				'%'))
+				and real_name LIKE  #{realName,jdbcType=VARCHAR}
 			</if>
 		</where>
 

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<toolbox>
+	
+	<tool>
+		<key>dateUtil</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.DateUtil</class>
+	</tool>
+	<tool>
+		<key>dateTool</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.DateTool</class>
+	</tool>
+	<tool>
+		<key>stringUtil</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.StringUtil</class>
+	</tool>
+	<tool>
+		<key>listUtil</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.ListUtil</class>
+	</tool>
+	<tool>
+		<key>numberUtil</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.NumberUtil</class>
+	</tool>
+	<tool>
+		<key>velocityUtil</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.VelocityUtil</class>
+	</tool>
+	<tool>
+		<key>applicationConstant</key>
+		<scope>request</scope>
+		<class>com.renthouse.common.util.ApplicationConstant</class>
+	</tool>
+	
+</toolbox>
