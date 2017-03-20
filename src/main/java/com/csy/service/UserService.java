@@ -20,4 +20,27 @@ public interface UserService {
 		 * @return
 		 */
 		public QueryBaseBatchResult<UserPojo> queryUserList(UserOrder order);
+		
+		/**
+		 * 插入用户
+		 * @param user
+		 * @return
+		 */
+		public int insterUser(UserPojo user);
+		
+		
+		/***
+		 * 修改用户
+		 * @param user
+		 * @return
+		 */
+		public int updateUser(UserPojo user);
+		
+		
+		/***
+		 * 删除用户
+		 * @param userId
+		 * @return
+		 */
+		public int deleteUserById(int userId);
 }

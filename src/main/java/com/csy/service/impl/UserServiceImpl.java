@@ -68,4 +68,22 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
+	public int insterUser(UserPojo user) {
+		int insertSelective = this.userDao.insertSelective(user);
+		return insertSelective;
+	}
+
+	@Override
+	public int updateUser(UserPojo user) {
+		int updateByPrimaryKeySelective = this.userDao.updateByPrimaryKeySelective(user);
+		return updateByPrimaryKeySelective;
+	}
+
+	@Override
+	public int deleteUserById(int userId) {
+		int deleteByPrimaryKey = this.userDao.deleteByPrimaryKey(userId);
+		return deleteByPrimaryKey;
+	}
+
 }

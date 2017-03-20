@@ -21,6 +21,14 @@
 			.grzx_top  .but15{ width:80px; height:32px; display:inline-block;  background:#fa7474; border:1px solid #ed4f4f; text-align:center; cursor:pointer; font:normal 13px/30px "微软雅黑";  color:#fff; margin-left:10px; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px;  }
 			.grzx_top  .but15:hover{ background:#ed4f4f;}
         </style>
+        <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">
+        $(function(){
+	        $(".dj").click(function(){
+	        });
+        }) 
+        
+        </script>
       </head>  
       
       <body>  
@@ -29,7 +37,7 @@
         <div class="grzx_top">
 			
 			<div class="grzx_ss"> 
-				真实姓名：<input type="date"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/> 
+				真实姓名：<input type="date"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="点击" class="but15 dj"/>
 			</div>
 			
          </div>

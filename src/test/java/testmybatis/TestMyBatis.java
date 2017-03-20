@@ -44,4 +44,44 @@ public class TestMyBatis {
 		logger.info(JSON.toJSONString(pageList));
 		
 	}
+	
+	@Test
+	public void testInsterUser() {
+		 UserPojo user = new UserPojo();
+		 
+		 user.setUserName("csy002");
+		 user.setUserPwd("888888");
+		 user.setRealName("陈思宇02");
+		 
+		int insterUser = userService.insterUser(user);
+		
+		logger.info(JSON.toJSONString(insterUser));
+		
+	}
+	
+	
+	@Test
+	public void testUpdateUser() {
+		 UserPojo user = new UserPojo();
+		 user.setUserId(274);
+		 user.setUserName("csy003");
+		 user.setUserPwd("888888");
+		 user.setRealName("陈思宇03");
+		 
+		int updateUser = userService.updateUser(user);
+		
+		logger.info(JSON.toJSONString(updateUser));
+		
+	}
+	
+	@Test
+	public void testDeleteUser() {
+		 
+		int userId = 274;
+		int deleteUser = userService.deleteUserById(userId);
+		
+		logger.info(JSON.toJSONString(deleteUser));
+		
+	}
+	
 }
