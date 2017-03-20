@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csy.dao.UserDao">
+	<resultMap id="BaseResultMap" type="com.csy.pojo.UserPojo">
+		<id column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+		<result column="user_info" property="userInfo" jdbcType="VARCHAR" />
+		<result column="tel_no" property="telNo" jdbcType="VARCHAR" />
+		<result column="qq_no" property="qqNo" jdbcType="VARCHAR" />
+		<result column="email_no" property="emailNo" jdbcType="VARCHAR" />
+		<result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+		<result column="real_name" property="realName" jdbcType="VARCHAR" />
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_name, user_pwd, user_info, tel_no, qq_no, email_no,
+		user_address, real_name,
+		id_card, create_time
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from test_user
+		where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByName" resultMap="BaseResultMap" parameterType="com.csy.pojo.UserPojo">
+		select
+		<include refid="Base_Column_List" />
+		from test_user
+		<where>
+			<if test="realName != null">
+				and user_name LIKE CONCAT('%', CONCAT(#{realName,jdbcType=VARCHAR},
+				'%'))
+			</if>
+		</where>
+		
+		limit #{start},#{limit}
+
+	</select>
+	
+	<select id="selectByNameCount" resultType="long" parameterType="com.csy.pojo.UserPojo">
+		select
+		count(*)
+		from test_user
+		<where>
+			<if test="realName != null">
+				and user_name LIKE CONCAT('%', CONCAT(#{realName,jdbcType=VARCHAR},
+				'%'))
+			</if>
+		</where>
+
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from test_user
+		where user_id = #{userId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.csy.pojo.UserPojo">
+		insert into test_user ( user_name, user_pwd,
+		user_info, tel_no, qq_no,
+		email_no, user_address, real_name,
+		id_card)
+		values ( #{userName,jdbcType=VARCHAR},
+		#{userPwd,jdbcType=VARCHAR},
+		#{userInfo,jdbcType=VARCHAR}, #{telNo,jdbcType=VARCHAR}, #{qqNo,jdbcType=VARCHAR},
+		#{emailNo,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR},
+		#{realName,jdbcType=VARCHAR},
+		#{idCard,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.csy.pojo.UserPojo">
+		insert into test_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userPwd != null">
+				user_pwd,
+			</if>
+			<if test="userInfo != null">
+				user_info,
+			</if>
+			<if test="telNo != null">
+				tel_no,
+			</if>
+			<if test="qqNo != null">
+				qq_no,
+			</if>
+			<if test="emailNo != null">
+				email_no,
+			</if>
+			<if test="userAddress != null">
+				user_address,
+			</if>
+			<if test="realName != null">
+				real_name,
+			</if>
+			<if test="idCard != null">
+				id_card,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd != null">
+				#{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userInfo != null">
+				#{userInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="telNo != null">
+				#{telNo,jdbcType=VARCHAR},
+			</if>
+			<if test="qqNo != null">
+				#{qqNo,jdbcType=VARCHAR},
+			</if>
+			<if test="emailNo != null">
+				#{emailNo,jdbcType=VARCHAR},
+			</if>
+			<if test="userAddress != null">
+				#{userAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="idCard != null">
+				#{idCard,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.csy.pojo.UserPojo">
+		update test_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd != null">
+				user_pwd = #{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userInfo != null">
+				user_info = #{userInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="telNo != null">
+				tel_no = #{telNo,jdbcType=VARCHAR},
+			</if>
+			<if test="qqNo != null">
+				qq_no = #{qqNo,jdbcType=VARCHAR},
+			</if>
+			<if test="emailNo != null">
+				email_no = #{emailNo,jdbcType=VARCHAR},
+			</if>
+			<if test="userAddress != null">
+				user_address = #{userAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="idCard != null">
+				id_card = #{idCard,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.csy.pojo.UserPojo">
+		update test_user
+		set user_name = #{userName,jdbcType=VARCHAR},
+		user_pwd = #{userPwd,jdbcType=VARCHAR},
+		user_info = #{userInfo,jdbcType=VARCHAR},
+		tel_no = #{telNo,jdbcType=VARCHAR},
+		qq_no = #{qqNo,jdbcType=VARCHAR},
+		email_no = #{emailNo,jdbcType=VARCHAR},
+		user_address = #{userAddress,jdbcType=VARCHAR},
+		real_name = #{realName,jdbcType=VARCHAR},
+		id_card = #{idCard,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP}
+		where user_id = #{userId,jdbcType=INTEGER}
+	</update>
+
+</mapper>
