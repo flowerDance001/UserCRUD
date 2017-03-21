@@ -4,7 +4,7 @@ table.tab05 tr td{border-top:1px solid #ededed; border-left:1px solid #ededed; t
 table.tab05 tr td a{ color:#08c; margin:0 10px;}
 table.tab05 tr td a:hover{color:#e84e46;}
 table.tab05 tr td span.color3{ color:#ed4f4f;}
-			
+
 .grzx_top{ width:96%; height:35px; font:normal 14px/30px "Î¢ÈíÑÅºÚ"; color:#555; margin:0 auto; padding-top:20px; margin:0 auto; }
 .grzx_top .grzx_ss{ float:left; display:inline;}
 .grzx_top .grzx_cz{ float:right; display:inline;}
@@ -12,3 +12,14 @@ table.tab05 tr td span.color3{ color:#ed4f4f;}
 .grzx_top .grzx_ss input.text10{width:130px; height:32px; border:1px solid #e6e4e3; text-indent:10px; color:#666;   background:#fff; font:normal 12px/27px "Î¢ÈíÑÅºÚ"; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px; vertical-align:middle;}
 .grzx_top  .but15{ width:80px; height:32px; display:inline-block;  background:#fa7474; border:1px solid #ed4f4f; text-align:center; cursor:pointer; font:normal 13px/30px "Î¢ÈíÑÅºÚ";  color:#fff; margin-left:10px; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px;  }
 .grzx_top  .but15:hover{ background:#ed4f4f;}
+
+/*·ÖÒ³*/
+.page{ width:100%; height:30px; display:block; text-align:center; margin:30px auto; }
+.page a{ width:auto; height:26px; padding:0 10px; font:normal 12px/26px "Î¢ÈíÑÅºÚ"; color:#555; border:1px solid #ccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;   margin:0 5px; display:inline-block; background:#fff; }
+.page span{ width:auto; height:22px; padding:0 10px; font:normal 12px/22px "Î¢ÈíÑÅºÚ"; color:#555; border:1px solid #ccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;   margin:0 5px; display:inline-block; background:#fff;}
+.page a:hover{ background:#e84e46; color:#fff; border:1px solid #e84e46;}
+.page a.pageon{background:#e84e46; color:#fff; border:1px solid #e84e46;}
+
+/*µ¯³ö²¿·Ö-----------------------------------*/
+.black{ width:100%; height:100%; position:fixed; left:0; top:0; background:#000; filter:alpha(opacity:50); opacity:0.5;  -moz-opacity:0.5; z-index:1000;}
+.tkbox{ width:420px; height:auto; overflow:hidden; background:#f3f3f3; position:fixed; left:50%; margin-left:-210px; top:150px; z-index:10000;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; padding:15px 10px;}

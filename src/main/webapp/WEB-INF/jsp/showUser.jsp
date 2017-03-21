@@ -1,72 +1,97 @@
-
-    <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>  
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
     <html>  
       <head>  
-        <title>测试</title>  
-        <style type="text/css">
-       	 	table.tab05{width:96%; height:auto; overflow:hidden; border:1px solid #ededed; border-top:none; border-left:none; margin:15px auto; background:#fff;}
-			table.tab05 tr th{ background:#f5f5f6; border-top:1px solid #ededed; border-left:1px solid #ededed; text-align:center; font:normal 14px/20px "微软雅黑"; color:#222; padding:15px 0;}
-			table.tab05 tr td{border-top:1px solid #ededed; border-left:1px solid #ededed; text-align:center; font:normal 13px/20px "微软雅黑"; color:#666; padding:15px 0;}
-			table.tab05 tr td a{ color:#08c; margin:0 10px;}
-			table.tab05 tr td a:hover{color:#e84e46;}
-			table.tab05 tr td span.color3{ color:#ed4f4f;}
-			
-        	.grzx_top{ width:96%; height:35px; font:normal 14px/30px "微软雅黑"; color:#555; margin:0 auto; padding-top:20px; margin:0 auto; }
-			.grzx_top .grzx_ss{ float:left; display:inline;}
-			.grzx_top .grzx_cz{ float:right; display:inline;}
-			.grzx_top .grzx_ss select{width:130px; height:32px; box-sizing:border-box; padding:6px 0; border:1px solid #e6e4e3; text-indent:10px; color:#666;   background:#fff; font:normal 12px/20px "微软雅黑"; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px; vertical-align:middle;}
-			.grzx_top .grzx_ss input.text10{width:130px; height:32px; border:1px solid #e6e4e3; text-indent:10px; color:#666;   background:#fff; font:normal 12px/27px "微软雅黑"; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px; vertical-align:middle;}
-			.grzx_top  .but15{ width:80px; height:32px; display:inline-block;  background:#fa7474; border:1px solid #ed4f4f; text-align:center; cursor:pointer; font:normal 13px/30px "微软雅黑";  color:#fff; margin-left:10px; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px;  }
-			.grzx_top  .but15:hover{ background:#ed4f4f;}
-        </style>
-        <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+        <title>用户crud</title>  
+        <link rel="stylesheet" type="text/css" href="/mtest/css/basic.css">
+        <script type="text/javascript" src="/mtest/js/jquery-1.7.2.min.js"></script>
+         <script type="text/javascript" src="/mtest/js/usereditor/user.js"></script> 
         <script type="text/javascript">
-        $(function(){
-	        $(".dj").click(function(){
-	        });
-        }) 
-        
+	        
+	       
         </script>
+        
       </head>  
       
       <body>  
+      
+       
       <form action="/mtest/user/showUser" method="post">
       
         <div class="grzx_top">
 			
 			<div class="grzx_ss"> 
-				真实姓名：<input type="date"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="点击" class="but15 dj"/>
+				真实姓名：<input type="date"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="添加" class="but15 tj"/>
 			</div>
 			
          </div>
          
-	        <table cellpadding="0" cellspacing="0" class="tab05" >
-		        	<tr>
-			        	<th>用户名</th>
-			        	<th>电话</th>
-			        	<th>电子邮件</th>
-			        	<th>真实姓名</th>
-			        	<th>身份证号码</th>
-			        	<th>操作</th>
-		        	</tr>
-		        <c:forEach var="user" items="${userList}">
-		                 <%--用EL表达式调用list对象的属性循环输出对象的各个属性值--%>
-						
-		                 <tr>
-		                    <td>${user.userName}</td>
-		                    <td>${user.telNo}</td>
-		                    <td>${user.emailNo}</td>
-		                    <td>${user.realName}</td>
-		                   	<td>${user.idCard}</td>
-		                  </tr>
+      
+		        <table cellpadding="0" cellspacing="0" class="tab05" >
+			        	<tr>
+				        	<th>用户名</th>
+				        	<th>电话</th>
+				        	<th>电子邮件</th>
+				        	<th>真实姓名</th>
+				        	<th>身份证号码</th>
+				        	<th>操作</th>
+			        	</tr>
+			        <c:forEach var="user" items="${userList}">
+			                 <%--用EL表达式调用list对象的属性循环输出对象的各个属性值--%>
+			                 <tr>
+			                    <td>${user.userName}</td>
+			                    <td>${user.telNo}</td>
+			                    <td>${user.emailNo}</td>
+			                    <td>${user.realName}</td>
+			                   	<td>${user.idCard}</td>
+			                   	<td>
+			                   		<a href="#" class="bj" userId="${user.userId}">编辑</a>
+			                   	</td>
+			                  </tr>
+					</c:forEach>
+			</table>
+			
+			<input id="pageNumber" name="pageNumber" type="hidden" value="$page.currentPageNo" />
+			<input id="isPageClick" name="isPageClick" type="hidden" value="N" />
+			<input id="allPages" type="hidden"	value="$!page.totalPageCount" />
+			
+			<div class="page">
+				<a href="javascript:goPage(1)">首页</a>
+				
+				<c:if test="${page.currentPageNo < page.totalPageCount}">
+					#if($page.currentPageNo >  1)
+			    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}) - 1 )" >上一页</a>
+			    	#end
+		    	</c:if>
+		    	
+	    		第 ${page.currentPageNo} 页 - 共${page.totalPageCount}页 - 总共有${page.totalCount}条数据
+	    		
+				<c:if test="${page.currentPageNo < page.totalPageCount}">
+		    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}) + 1 )" >下一页</a>
+		    	</c:if>
+		    	
+				<a href="javascript:goPage(${page.totalPageCount})" >尾页</a>
+			</div>
 		
-				</c:forEach>
-			</tbody>
-			
 		</form>
+		
+	<div class="black" style="display:none;"></div>
+	
+	<div class="tkbox" id="addAndE" style="display:none; width: 555px;">
+	  <div class="tk_tit1">确认房源已成交</div>
+	   <table cellpadding="0" cellspacing="0" class="tab02">
 			
+	      <tr><td class="td02" width="130px">用户名：</td><td><input type="text" name="userName" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	      <tr><td class="td02">电话：</td><td><input type="text" name="telNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	      <tr><td class="td02">电子邮件：</td><td><input type="text" name="emailNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	      <tr><td class="td02">真实姓名：</td><td><input type="text" name="realName" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	       <tr><td class="td02">身份证号码：</td><td><input type="text" name="idCard" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	     
+	    </table>
+	  <div class="butbox2"><input type="submit" value="保存" class="but12 save" houseStatus="4"><input type="submit" value="取消" class="but13 qx" ></div>
+	</div>
+	
 	
       </body>  
     </html>  
