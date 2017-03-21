@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-
+	
+	  
+	  
 	$('.tj').click(function(){
 		
 		$(".black").show();

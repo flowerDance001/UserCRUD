@@ -9,12 +9,11 @@
          <script type="text/javascript" src="/mtest/js/usereditor/user.js"></script> 
         <script type="text/javascript">
         function goPage(intPage)
-     	{
-     		var pageNumber=document.getElementById("pageNumber");
-     		pageNumber.value=intPage;
-     		pageNumber.form.submit();
-     	}
-	       
+	       	{
+	       		$("#pageNumber").val(intPage);
+	       		$("#queryUserFrom").submit();
+	       	}
+		       
         </script>
         
       </head>  
@@ -22,7 +21,7 @@
       <body>  
       
        
-      <form action="/mtest/user/showUser" method="post">
+      <form action="/mtest/user/showUser" method="post" id="queryUserFrom">
       
         <div class="grzx_top">
 			
@@ -57,24 +56,21 @@
 					</c:forEach>
 			</table>
 			
-			<input id="pageNumber" name="pageNumber" type="hidden" value="$page.currentPageNo" />
-			<input id="isPageClick" name="isPageClick" type="hidden" value="N" />
-			<input id="allPages" type="hidden"	value="$!page.totalPageCount" />
+			<input id="pageNumber" name="pageNumber" type="hidden" value="${page.currentPageNo}" />
+			<input id="allPages" type="hidden"	value="${page.totalPageCount}" />
 			
 			<div class="page">
 				<a href="javascript:goPage(1)">首页</a>
 				
-				<c:if test="${page.currentPageNo < page.totalPageCount}">
-					#if($page.currentPageNo >  1)
+				<%-- <c:if test="${page.currentPageNo < page.totalPageCount}">
+		    	</c:if> --%>
 			    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}) - 1 )" >上一页</a>
-			    	#end
-		    	</c:if>
 		    	
 	    		第 ${page.currentPageNo} 页 - 共${page.totalPageCount}页 - 总共有${page.totalCount}条数据
 	    		
-				<c:if test="${page.currentPageNo < page.totalPageCount}">
-		    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}) + 1 )" >下一页</a>
-		    	</c:if>
+				<%-- <c:if test="${page.currentPageNo < page.totalPageCount}">
+		    	</c:if> --%>
+		    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}+1))" >下一页</a>
 		    	
 				<a href="javascript:goPage(${page.totalPageCount})" >尾页</a>
 			</div>

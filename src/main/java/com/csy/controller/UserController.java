@@ -49,7 +49,15 @@ public class UserController extends BaseController{
 	   UserOrder order = new UserOrder();
 	   
        String realName = request.getParameter("realName"); 
-       
+       String pageNumber = request.getParameter("pageNumber");
+       if (pageNumber!=null) {
+		int parseInt = Integer.parseInt(pageNumber);
+		
+		if (parseInt<1) {
+			parseInt=1;
+		}
+		order.setPageNumber(parseInt);
+       }
        if (realName!=null&&!"".equals(realName)) {
     	   modelMap.put("realName", realName);
     	   order.setRealName("%"+realName+"%");
