@@ -8,7 +8,12 @@
         <script type="text/javascript" src="/mtest/js/jquery-1.7.2.min.js"></script>
          <script type="text/javascript" src="/mtest/js/usereditor/user.js"></script> 
         <script type="text/javascript">
-	        
+        function goPage(intPage)
+     	{
+     		var pageNumber=document.getElementById("pageNumber");
+     		pageNumber.value=intPage;
+     		pageNumber.form.submit();
+     	}
 	       
         </script>
         
@@ -22,7 +27,7 @@
         <div class="grzx_top">
 			
 			<div class="grzx_ss"> 
-				真实姓名：<input type="date"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="添加" class="but15 tj"/>
+				真实姓名：<input type="text"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="添加" class="but15 tj"/>
 			</div>
 			
          </div>
@@ -79,13 +84,12 @@
 	<div class="black" style="display:none;"></div>
 	
 	<div class="tkbox" id="addAndE" style="display:none; width: 555px;">
-	  <div class="tk_tit1">确认房源已成交</div>
 	   <table cellpadding="0" cellspacing="0" class="tab02">
-			
+			<input type="hidden" name="userId" value="" >
 	      <tr><td class="td02" width="130px">用户名：</td><td><input type="text" name="userName" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
 	      <tr><td class="td02">电话：</td><td><input type="text" name="telNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
 	      <tr><td class="td02">电子邮件：</td><td><input type="text" name="emailNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
-	      <tr><td class="td02">真实姓名：</td><td><input type="text" name="realName" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	      <tr><td class="td02">真实姓名：</td><td><input type="text" name="realNameT" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
 	       <tr><td class="td02">身份证号码：</td><td><input type="text" name="idCard" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
 	     
 	    </table>

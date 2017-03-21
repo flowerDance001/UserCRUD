@@ -27,6 +27,14 @@
 		from test_user
 		where user_id = #{userId,jdbcType=INTEGER}
 	</select>
+	
+	<select id="selectUserByName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from test_user
+		where user_name = #{userName,jdbcType=INTEGER}
+	</select>
 
 	<select id="selectByName" resultMap="BaseResultMap" parameterType="com.csy.pojo.UserPojo">
 		select

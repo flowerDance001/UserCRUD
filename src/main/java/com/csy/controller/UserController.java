@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
 import com.csy.controller.base.BaseController;
 import com.csy.controller.util.PageUtil;
 import com.csy.pojo.UserPojo;
@@ -33,7 +34,7 @@ public class UserController extends BaseController{
    private UserService userService;  
      
    /***
-    * ÓÃ»§ÁÐ±í
+    * ï¿½Ã»ï¿½ï¿½Ð±ï¿½
     * @param request
     * @param response
     * @param modelMap
@@ -57,7 +58,7 @@ public class UserController extends BaseController{
        QueryBaseBatchResult<UserPojo> queryUserList = userService.queryUserList(order);
       
        System.out.println(queryUserList);
-	    //Ò³Ãæ·ÖÒ³
+	    //Ò³ï¿½ï¿½ï¿½Ò³
 	    PageUtil.setPageResultToModel(queryUserList, modelMap);
 	     
 	    List<UserPojo> pageList = queryUserList.getPageList();
@@ -71,14 +72,14 @@ public class UserController extends BaseController{
    
    
    /***
-    * ²åÈëÓÃ»§
+    * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
     * @param request
     * @param response
     * @param modelMap
     * @return
     * @throws Exception
     */
-   @RequestMapping("/insertUser")  
+   @RequestMapping("/saveUser")  
    public String insertUser(HttpServletRequest request, HttpServletResponse response,
 			ModelMap modelMap) throws Exception {
 	   
@@ -87,18 +88,29 @@ public class UserController extends BaseController{
 	   
 	   UserPojo user = getUser(request);
 	   
-       //²åÈëÊý¾Ý
-       int insterUser = userService.insterUser(user);
+	   String userId = request.getParameter("userId");
+	   
+	   int save = 0;
+	   
+	   user.setUserPwd("888888");
+	   if (userId==null||"".equals(userId)) {
+		   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		    save = userService.insterUser(user);
+	   }else {
+		   user.setUserId(Integer.parseInt(userId));
+		    save = userService.updateUser(user);
+	   }
+	   
 
        //modelMap.addAttribute("user", user);  
 
-		if (insterUser>1) {
+		if (save>0) {
 			json.put("code", "1");
-			json.put("msg", "Ìí¼ÓÓÃ»§³É¹¦");
+			json.put("msg", "ä¿å­˜æˆåŠŸ");
 			
 		} else {
 			json.put("code", "0");
-			json.put("msg", "Ìí¼ÓÓÃ»§Ê§°Ü");
+			json.put("msg", "ä¿å­˜å¤±è´¥");
 		}
 		
 		printHttpResponse(response, json);
@@ -108,38 +120,35 @@ public class UserController extends BaseController{
    }  
    
    /***
-    * ÐÞ¸ÄÓÃ»§ÐÅÏ¢
+    * æŸ¥è¯¢ç”¨æˆ·æ ¹æ®ç”¨æˆ·å
     * @param request
     * @param response
     * @param modelMap
     * @return
     * @throws Exception
     */
-   @RequestMapping("/updateUser")  
+   @RequestMapping("/getUserByUserName")  
    public String updateUser(HttpServletRequest request, HttpServletResponse response,
 			ModelMap modelMap) throws Exception {
 	   
 	   
 	   JSONObject json = new JSONObject();
 	   
-	   String userId = request.getParameter("userId"); 
-	   if (userId==null&&!"".equals(userId)) {
-		   json.put("code", "0");
-		   json.put("msg", "È±ÉÙ×ÜÒª²ÎÊý");
+	   String userName = request.getParameter("userName"); 
+	   if (userName==null&&!"".equals(userName)) {
+		   return null;
 	   }
-	   UserPojo user = getUser(request);
 	   
-       //²åÈëÊý¾Ý
-       int updateUser = userService.updateUser(user);
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+       UserPojo userByName = userService.getUserByName(userName);
 
+       
        //modelMap.addAttribute("user", user);  
 
-		if (updateUser>1) {
+		if (userByName!=null&&userByName.getUserId()>0) {
 			json.put("code", "1");
-			json.put("msg", "ÐÞ¸ÄÓÃ»§³É¹¦");
 		} else {
 			json.put("code", "0");
-			json.put("msg", "ÐÞ¸ÄÓÃ»§Ê§°Ü");
 		}
 		
 		printHttpResponse(response, json);
@@ -149,7 +158,7 @@ public class UserController extends BaseController{
    
    
    /***
-    * É¾³ýÓÃ»§
+    * É¾ï¿½ï¿½ï¿½Ã»ï¿½
     * @param request
     * @param response
     * @param modelMap
@@ -166,21 +175,21 @@ public class UserController extends BaseController{
 	   String userId = request.getParameter("userId"); 
 	   if (userId==null&&!"".equals(userId)) {
 		   json.put("code", "0");
-		   json.put("msg", "È±ÉÙ×ÜÒª²ÎÊý");
+		   json.put("msg", "È±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½");
 	   }
 	   
 	   
-       //²åÈëÊý¾Ý
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        int updateUser = userService.deleteUserById(Integer.parseInt(userId));
 
        //modelMap.addAttribute("user", user);  
 
 		if (updateUser>1) {
 			json.put("code", "1");
-			json.put("msg", "É¾³ýÓÃ»§³É¹¦");
+			json.put("msg", "É¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½É¹ï¿½");
 		} else {
 			json.put("code", "0");
-			json.put("msg", "É¾³ýÓÃ»§Ê§°Ü");
+			json.put("msg", "É¾ï¿½ï¿½ï¿½Ã»ï¿½Ê§ï¿½ï¿½");
 		}
 		
 		printHttpResponse(response, json);

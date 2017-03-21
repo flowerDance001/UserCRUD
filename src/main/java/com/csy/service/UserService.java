@@ -37,6 +37,9 @@ public interface UserService {
 		public int updateUser(UserPojo user);
 		
 		
+		public UserPojo getUserByName(String userName);
+		
+		
 		/***
 		 * 删除用户
 		 * @param userId

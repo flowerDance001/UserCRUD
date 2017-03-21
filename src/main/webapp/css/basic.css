@@ -23,3 +23,23 @@ table.tab05 tr td span.color3{ color:#ed4f4f;}
 /*µ¯³ö²¿·Ö-----------------------------------*/
 .black{ width:100%; height:100%; position:fixed; left:0; top:0; background:#000; filter:alpha(opacity:50); opacity:0.5;  -moz-opacity:0.5; z-index:1000;}
 .tkbox{ width:420px; height:auto; overflow:hidden; background:#f3f3f3; position:fixed; left:50%; margin-left:-210px; top:150px; z-index:10000;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; padding:15px 10px;}
+.tkbox input.text04{ width:360px; height:50px; display:block; margin:13px auto;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; border:none; background:#fff url(../images/ico11.png) no-repeat 20px center; font:normal 15px/50px "Î¢ÈíÑÅºÚ"; color:#888; text-indent:60px;}
+.tkbox input.text05{ width:360px; height:50px; display:block; margin:13px auto;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; border:none; background:#fff url(../images/ico12.png) no-repeat 20px center; font:normal 15px/50px "Î¢ÈíÑÅºÚ"; color:#888; text-indent:60px;}
+.tkbox .butbox2{ text-align:center; width:100%; height:auto; overflow:hidden; }
+.tkbox .butbox2 .but07{ width:360px; height:45px; display:inline-block; background:#f96159;  border:none; color: #fff;  font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#fff;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; cursor:pointer; margin:10px auto;}
+.tkbox .butbox2 .but07:hover{ background:#f83a30;}
+
+.tkbox .butbox2 .but12{ width:165px; height:45px; display:inline-block; background:#f96159;  border:none; color: #fff;  font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#fff;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; cursor:pointer; margin:10px;}
+.tkbox .butbox2 .but12:hover{ background:#f83a30;}
+
+.tkbox .butbox2 .but13{ width:165px; height:45px; display:inline-block; background:#bbb;  border:none; color: #fff;  font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#fff;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; cursor:pointer; margin:10px;}
+.tkbox .butbox2 .but13:hover{ background:#aaa;}
+
+.tkbox .butbox2 .but121{ width:125px; height:45px; display:inline-block; background:#f96159;  border:none; color: #fff;  font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#fff;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; cursor:pointer; margin:10px 10px 30px 10px;}
+.tkbox .butbox2 .but121:hover{ background:#f83a30;}
+
+.tkbox .butbox2 .but131{ width:125px; height:45px; display:inline-block; background:#bbb;  border:none; color: #fff;  font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#fff;  border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; cursor:pointer;  margin:10px 10px 30px 10px;}
+.tkbox .butbox2 .but131:hover{ background:#aaa;}
+
+.tkbox p.pd{font:normal 18px/45px "Î¢ÈíÑÅºÚ"; color:#222; text-align:center; padding:40px 0 20px 0;}
+.tkbox p.pd img{ display:inline-block; vertical-align:middle; margin:0 5px 3px 0; width:22px; height:22px;}

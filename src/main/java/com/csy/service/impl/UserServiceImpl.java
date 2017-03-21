@@ -86,4 +86,14 @@ public class UserServiceImpl implements UserService{
 		return deleteByPrimaryKey;
 	}
 
+	@Override
+	public UserPojo getUserByName(String userName) {
+		
+		UserPojo selectUserByName = new UserPojo();
+		
+		selectUserByName = this.userDao.selectUserByName(userName);
+		
+		return selectUserByName;
+	}
+
 }

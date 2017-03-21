@@ -7,7 +7,7 @@ import com.csy.pojo.UserPojo;
 public interface UserDao {
 	
 	/***
-	 * ¸ù¾ÝIdÉ¾³ýÓÃ»§
+	 * ï¿½ï¿½ï¿½IdÉ¾ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param UserPojoId
 	 * @return
 	 */
@@ -16,35 +16,39 @@ public interface UserDao {
     int insert(UserPojo record);
 
     /***
-     * ²åÈëÓÃ»§
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
      * @param record
      * @return
      */
     int insertSelective(UserPojo record);
 
     /***
-     * ¸ù¾ÝId²éÑ¯ÓÃ»§
+     * ï¿½ï¿½ï¿½Idï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
      * @param UserPojoId
      * @return
      */
     UserPojo selectByPrimaryKey(Integer UserPojoId);
     
+    
+    UserPojo selectUserByName(String userName);
+    
+    
     /***
-     * Ìõ¼þ²éÑ¯ÓÃ»§
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
      * @param record
      * @return
      */
     List<UserPojo> selectByName(UserPojo record);
     
     /***
-     * ²éÑ¯ÓÃ»§×ÜÊý
+     * ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param record
      * @return
      */
     long selectByNameCount(UserPojo record);
 
     /***
-     * ÐÞ¸ÄÓÃ»§
+     * ï¿½Þ¸ï¿½ï¿½Ã»ï¿½
      * @param record
      * @return
      */
