@@ -51,7 +51,7 @@
 			                    <td>${user.realName}</td>
 			                   	<td>${user.idCard}</td>
 			                   	<td>
-			                   		<a href="#" class="bj" userId="${user.userId}">编辑</a>
+			                   		<a href="#" class="bj" userId="${user.userId}" userName="${user.userName}" telNo="${user.telNo}" emailNo="${user.emailNo}" realName="${user.realName}" idCard="${user.idCard}">编辑</a>
 			                   	</td>
 			                  </tr>
 					</c:forEach>

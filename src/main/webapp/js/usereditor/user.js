@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
-	 
-	
-	
-	
+
 	$('.tj').click(function(){
 		
 		$(".black").show();
@@ -21,7 +18,9 @@ $(document).ready(function(){
 	    
 	  //用户名验证
 	        if (userName.val()!='') {
-	        	var data = {
+	        	var userId = $('input[name=userId]').val();
+	        	if (userId=="") {
+	        		var data = {
 	        			userName:userName.val()
 	        			};
 		        	$.ajax({
@@ -38,6 +37,7 @@ $(document).ready(function(){
 							}
 						}
 					});	
+	        	}
 		        	var span = userName.next('span');
 					span.hide();
 	        }else{
@@ -136,9 +136,7 @@ $(document).ready(function(){
 					realName:realName.val(),
 					idCard:idCard.val()
 			};
-	        
 
-			
 			$.ajax({
 			    url:'/mtest/user/saveUser',
 				data:data,
@@ -157,10 +155,37 @@ $(document).ready(function(){
 	    
 	});
 	
+	
+	
+	//点击编辑
+	$('.bj').click(function(){
+		
+		var userIdS = $(this).attr("userId");
+		var userNameS = $(this).attr("userName");
+		var telNoS = $(this).attr("telNo");
+		var  emailNoS = $(this).attr("emailNo");
+		var realNameS = $(this).attr("realName");
+		var idCardS = $(this).attr("idCard");
+		
+		
+		$('input[name=userId]').val(userIdS);
+		$('input[name=userName]').val(userNameS);
+	    $('input[name=telNo]').val(telNoS);
+	    $('input[name=emailNo]').val(emailNoS);
+	    $('input[name=realNameT]').val(realNameS);
+	    $('input[name=idCard]').val(idCardS);
+		
+	    $(".black").show();
+		$("#addAndE").show();
+	    
+	});
+	
 	//用户名验证（失去焦点）
 	$('input[name=userName]').blur(function () {
         var userName = $(this);
         if (userName.val()!='') {
+        	var userId = $('input[name=userId]').val();
+        	if (userId=="") {
         		var data = {
         			userName:userName.val()
         			};
@@ -178,6 +203,7 @@ $(document).ready(function(){
 						}
 					}
 				});	
+        	}
 	        	var span = userName.next('span');
 				span.hide();
         }else{
@@ -295,6 +321,7 @@ $(document).ready(function(){
 	    $('input[name=emailNo]').val('');
 	    $('input[name=realNameT]').val('');
 	    $('input[name=idCard]').val('');
+	    $('input[name=userId]').val('');
 	}
 	
 	
