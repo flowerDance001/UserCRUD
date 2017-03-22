@@ -136,7 +136,7 @@ public class UserController extends BaseController{
     * @throws Exception
     */
    @RequestMapping("/getUserByUserName")  
-   public String updateUser(HttpServletRequest request, HttpServletResponse response,
+   public String getUserByUserName(HttpServletRequest request, HttpServletResponse response,
 			ModelMap modelMap) throws Exception {
 	   
 	   
@@ -147,7 +147,7 @@ public class UserController extends BaseController{
 		   return null;
 	   }
 	   
-       //�������
+       //查询用户，根据用户名
        UserPojo userByName = userService.getUserByName(userName);
 
        
@@ -164,9 +164,52 @@ public class UserController extends BaseController{
        return null;  
    }  
    
+   /***
+    * 查询用户根据userId
+    * @param request
+    * @param response
+    * @param modelMap
+    * @return
+    * @throws Exception
+    */
+   @RequestMapping("/getUserByUserId")  
+   public String getUserByUserId(HttpServletRequest request, HttpServletResponse response,
+			ModelMap modelMap) throws Exception {
+	   
+	   
+	   JSONObject json = new JSONObject();
+	   
+	   String userId = request.getParameter("userId"); 
+	   if (userId==null&&!"".equals(userId)) {
+			json.put("code", "0");
+			json.put("msg", "缺少重要参数");
+			printHttpResponse(response, json);
+		   return null;
+	   }
+	   //更具id查询用户
+	   
+       UserPojo userById = userService.getUserById(Integer.parseInt(userId));
+       
+
+       
+       //modelMap.addAttribute("user", user);  
+
+		if (userById!=null&&userById.getUserId()>0) {
+			json.put("code", "1");
+			json.put("user", userById);
+		} else {
+			json.put("code", "0");
+			json.put("msg", "该用户不存在");
+		}
+		
+		printHttpResponse(response, json);
+	    
+       return null;  
+   }  
+   
    
    /***
-    * ɾ���û�
+    * 删除用户
     * @param request
     * @param response
     * @param modelMap
@@ -183,7 +226,7 @@ public class UserController extends BaseController{
 	   String userId = request.getParameter("userId"); 
 	   if (userId==null&&!"".equals(userId)) {
 		   json.put("code", "0");
-		   json.put("msg", "ȱ����Ҫ����");
+		   json.put("msg", "缺少总要参数");
 	   }
 	   
 	   
@@ -192,12 +235,12 @@ public class UserController extends BaseController{
 
        //modelMap.addAttribute("user", user);  
 
-		if (updateUser>1) {
+		if (updateUser>0) {
 			json.put("code", "1");
-			json.put("msg", "ɾ���û��ɹ�");
+			json.put("msg", "删除成功");
 		} else {
 			json.put("code", "0");
-			json.put("msg", "ɾ���û�ʧ��");
+			json.put("msg", "删除失败");
 		}
 		
 		printHttpResponse(response, json);

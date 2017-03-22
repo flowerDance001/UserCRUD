@@ -26,7 +26,9 @@
         <div class="grzx_top">
 			
 			<div class="grzx_ss"> 
-				真实姓名：<input type="text"  name="realName" value="${realName}" class="text10">  <input type="submit" value="查询" class="but15"/>  <input type="buttom" value="添加" class="but15 tj"/>
+				真实姓名：<input type="text"  name="realName" value="${realName}" class="text10">  
+				<input type="submit" value="查询" class="but15"/>  
+				<input type="buttom" value="添加用户" class="but15 tj"/>
 			</div>
 			
          </div>
@@ -50,7 +52,9 @@
 			                    <td>${user.realName}</td>
 			                   	<td>${user.idCard}</td>
 			                   	<td>
-			                   		<a href="#" class="bj" userId="${user.userId}" userName="${user.userName}" telNo="${user.telNo}" emailNo="${user.emailNo}" realName="${user.realName}" idCard="${user.idCard}">编辑</a>
+			                   		<a href="javascript:void(0);" class="bj" userId="${user.userId}" userName="${user.userName}" telNo="${user.telNo}" emailNo="${user.emailNo}" realName="${user.realName}" idCard="${user.idCard}">编辑</a>
+			                   		</br>
+			                   		<a href="javascript:void(0);" class="sc" userId="${user.userId}" >删除</a>
 			                   	</td>
 			                  </tr>
 					</c:forEach>
@@ -62,15 +66,16 @@
 			<div class="page">
 				<a href="javascript:goPage(1)">首页</a>
 				
-				<%-- <c:if test="${page.currentPageNo < page.totalPageCount}">
-		    	</c:if> --%>
+				<c:if test="${page.currentPageNo > 1}">
 			    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}) - 1 )" >上一页</a>
+		    	</c:if>
 		    	
 	    		第 ${page.currentPageNo} 页 - 共${page.totalPageCount}页 - 总共有${page.totalCount}条数据
+
 	    		
-				<%-- <c:if test="${page.currentPageNo < page.totalPageCount}">
-		    	</c:if> --%>
+				<c:if test="${page.currentPageNo < page.totalPageCount}">
 		    		<a href="javascript:goPage(parseFloat(${page.currentPageNo}+1))" >下一页</a>
+		    	</c:if>
 		    	
 				<a href="javascript:goPage(${page.totalPageCount})" >尾页</a>
 			</div>

@@ -9,6 +9,28 @@ $(document).ready(function(){
 		$("#addAndE").show();
 	});
 	
+	//点击删除
+	$('.sc').click(function(){
+		var userId = $(this).attr("userId");
+		var data = {
+				userId:userId
+		};
+		$.ajax({
+		    url:'/mtest/user/deleteUser',
+			data:data,
+			dataType : "json",
+			type: "post",
+			success:function(res){
+			    if(res.code == 1) {
+			    	alert(res.msg);
+			    	clean();
+			    	location.reload();
+				} else {
+					alert(res.msg);
+				}
+			}
+		});	
+	});
 	//点击保存
 	$('.save').click(function(){
 		var userId = $('input[name=userId]').val();
@@ -168,7 +190,24 @@ $(document).ready(function(){
 		var  emailNoS = $(this).attr("emailNo");
 		var realNameS = $(this).attr("realName");
 		var idCardS = $(this).attr("idCard");
-		
+		/*var data = {
+				userId:userIdS
+		};
+		$.ajax({
+		    url:'/mtest/user/getUserByUserId',
+			data:data,
+			dataType : "json",
+			type: "post",
+			success:function(res){
+			    if(res.code == 1) {
+			    	var user = res.user;
+			    	alert(user.id);
+					return;
+				}else {
+					alert(res.msg);
+				}
+			}
+		});	*/
 		
 		$('input[name=userId]').val(userIdS);
 		$('input[name=userName]').val(userNameS);

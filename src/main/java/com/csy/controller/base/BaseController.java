@@ -19,6 +19,7 @@ public abstract class BaseController  {
 	public static final String			ERROR_MESSAGE	= "errorMessage";
 	
 	public void renderErrMsg(String msgs, ModelMap modelMap) {
+		
 		String[] errMsg = msgs.split("#");
 		for (String msgMap : errMsg) {
 			String[] msg = msgMap.split(">");
@@ -34,9 +35,6 @@ public abstract class BaseController  {
 	       String	userName  = request.getParameter("userName"); 
 	       userPojo.setUserName(userName);
 	       
-	       String  	userPwd = request.getParameter("realName"); 
-	       userPojo.setRealName(realName);
-	       
 	       String  	userInfo = request.getParameter("userInfo"); 
 	       userPojo.setUserInfo(userInfo);
 	       
@@ -46,11 +44,8 @@ public abstract class BaseController  {
 	       String 	qqNo = request.getParameter("qqNo");
 	       userPojo.setQqNo(qqNo);
 	       
-	       String  	emailNo = request.getParameter("realName"); 
-	       userPojo.setRealName(realName);
-	       
-	       String 	userAddress = request.getParameter("realName"); 
-	       userPojo.setRealName(realName);
+	       String  	emailNo = request.getParameter("emailNo"); 
+	       userPojo.setEmailNo(emailNo);
 	       
 	       String  	idCard = request.getParameter("idCard"); 
 	       userPojo.setIdCard(idCard);
