@@ -87,11 +87,11 @@
 	<div class="tkbox" id="addAndE" style="display:none; width: 555px;">
 	   <table cellpadding="0" cellspacing="0" class="tab02">
 			<input type="hidden" name="userId" value="" >
-	      <tr><td class="td02" width="130px">用户名：</td><td><input type="text" name="userName" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
-	      <tr><td class="td02">电话：</td><td><input type="text" name="telNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
-	      <tr><td class="td02">电子邮件：</td><td><input type="text" name="emailNo" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
-	      <tr><td class="td02">真实姓名：</td><td><input type="text" name="realNameT" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
-	       <tr><td class="td02">身份证号码：</td><td><input type="text" name="idCard" value="" class="text06"> <span style="display:none; color:red;" clss="error"></span></td></tr>
+	      <tr><td class="td02" width="130px">用户名：</td><td><input type="text" name="userName" value="" class="text06"> <span style="display:none; color:red;" class="error"></span></td></tr>
+	      <tr><td class="td02">电话：</td><td><input type="text" name="telNo" value="" class="text06"> <span style="display:none; color:red;" class="error"></span></td></tr>
+	      <tr><td class="td02">电子邮件：</td><td><input type="text" name="emailNo" value="" class="text06"> <span style="display:none; color:red;" class="error"></span></td></tr>
+	      <tr><td class="td02">真实姓名：</td><td><input type="text" name="realNameT" value="" class="text06"> <span style="display:none; color:red;" class="error"></span></td></tr>
+	       <tr><td class="td02">身份证号码：</td><td><input type="text" name="idCard" value="" class="text06"> <span style="display:none; color:red;" class="error"></span></td></tr>
 	     
 	    </table>
 	  <div class="butbox2"><input type="submit" value="保存" class="but12 save" houseStatus="4"><input type="submit" value="取消" class="but13 qx" ></div>

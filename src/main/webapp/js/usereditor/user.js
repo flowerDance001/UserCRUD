@@ -4,7 +4,6 @@ $(document).ready(function(){
 	  
 	  
 	$('.tj').click(function(){
-		
 		$(".black").show();
 		$("#addAndE").show();
 	});
@@ -363,6 +362,7 @@ $(document).ready(function(){
 	    $('input[name=realNameT]').val('');
 	    $('input[name=idCard]').val('');
 	    $('input[name=userId]').val('');
+	    $('.error').hide();
 	}
 	
 	

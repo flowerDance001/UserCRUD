@@ -10,7 +10,7 @@
                             http://www.springframework.org/schema/mvc    
                             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
         <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->  
-        <context:component-scan base-package="com.csy.controller" />  
+       <!--  <context:component-scan base-package="com.csy.controller" />  --> 
         <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
         <bean id="mappingJacksonHttpMessageConverter"  
             class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
@@ -31,15 +31,103 @@
         </bean>  
         
        
+    
         
         <!-- 定义跳转的文件的前后缀 ，视图模式配置-->  
-        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-            <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
-            <property name="prefix" value="/WEB-INF/jsp/" />  
-            <property name="suffix" value=".jsp" />  
-        </bean>  
+        <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+          	  这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址  
+            <property name="prefix" value="/WEB-INF/" />  
+            <property name="suffix" value="" />  
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+             <property name="viewClass">
+	            <value>org.springframework.web.servlet.view.InternalResourceView</value>
+	        </property>
+	        <property name="order" value="1"/>
+        </bean>   -->
+        
+        <!--注解说明 -->    
+	    <context:annotation-config />       
+	      
+	     <!-- 注解支持 -->      
+	    <mvc:annotation-driven/>      
+	    <!-- 使Spring支持自动检测组件，如注解的Controller -->  
+	    <context:component-scan base-package="com.csy.controller" >  
+	         <!-- 允许定义过滤器将基包下的某些类纳入或排除  -->    
+	        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   
+	    </context:component-scan>  
+	      
+	    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>  
         
         
+        <!-- 配置JSP视图 -->  
+     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>  
+        <property name="prefix" value="/WEB-INF/"/>  
+        <property name="suffix" value=""/>        
+        <property name="contentType" value="text/html;charset=UTF-8"/>  
+        <property name="order" value="1"/>  
+     </bean>  
+     
+     <!-- velocity view config -->
+	<!-- <bean id="velocityViewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="cache" value="true" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="requestContextAttribute" value="true" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="prefix" value=""></property>
+		<property name="order" value="1"></property>
+		<property name="allowSessionOverride" value="true"></property>
+		<property name="viewNames">
+			<list>
+				<value>*.vm</value>
+				<value>*.jsp</value>
+			</list>
+		</property>
+		<property name="contentType" value="text/html; charset=UTF-8"></property>
+		<property name="toolboxConfigLocation" value="/WEB-INF/config/velocity-toolbox.xml"></property>
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
+		<property name="layoutUrl" value="layout/layout.vm" />
+	</bean> -->
+     
+      <!-- 配置freeMarker视图解析器 -->    
+    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">    
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>    
+        <property name="contentType" value="text/html; charset=utf-8"/>    
+        <property name="cache" value="true" />    
+        <property name="suffix" value=".ftl" />    
+        <property name="order" value="0"/>    
+    </bean>    
+    <!-- ftl参数配置 -->  
+    <bean id="freemarkerConfiguration"  
+        class="org.springframework.beans.factory.config.PropertiesFactoryBean">  
+        <property name="location" value="/WEB-INF/freemarker.properties" />  
+    </bean>  
+    <!-- 配置freeMarker的模板路径 -->    
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">    
+        <property name="templateLoaderPath">    
+            <value>/WEB-INF/ftl/</value>    
+        </property>    
+        <property name="freemarkerVariables">    
+            <map>    
+                <entry key="xml_escape" value-ref="fmXmlEscape" />    
+            </map>    
+        </property>    
+        <property name="defaultEncoding">    
+            <value>utf-8</value>    
+        </property>    
+        <property name="freemarkerSettings">    
+            <props>    
+                <prop key="template_update_delay">3600</prop>    
+            </props>    
+        </property>    
+    </bean>    
+  
+
+
+
+
           
         <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->  
         <bean id="multipartResolver"    
@@ -55,4 +143,4 @@
         
         
       
-    </beans>  
+</beans>  

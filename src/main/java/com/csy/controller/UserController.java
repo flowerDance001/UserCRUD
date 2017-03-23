@@ -2,6 +2,7 @@ package com.csy.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
+
+import org.springframework.web.servlet.ViewResolver;
 
 import com.csy.controller.base.BaseController;
 import com.csy.controller.util.PageUtil;
@@ -34,7 +38,7 @@ public class UserController extends BaseController{
    private UserService userService;  
      
    /***
-    * �û��б�
+    * 用户界面
     * @param request
     * @param response
     * @param modelMap
@@ -66,7 +70,7 @@ public class UserController extends BaseController{
        QueryBaseBatchResult<UserPojo> queryUserList = userService.queryUserList(order);
       
        System.out.println(queryUserList);
-	    //ҳ���ҳ
+	    //分页
 	    PageUtil.setPageResultToModel(queryUserList, modelMap);
 	     
 	    List<UserPojo> pageList = queryUserList.getPageList();
@@ -75,12 +79,30 @@ public class UserController extends BaseController{
 	     
        //modelMap.addAttribute("user", user);  
        
-       return "showUser";  
+       return "jsp/showUser.jsp";  
    }  
    
    
+   
    /***
-    * �����û�
+    * 测试testFreeMarker
+    * @param request
+    * @param response
+    * @param modelMap
+    * @return
+    * @throws Exception
+    */
+   @RequestMapping("/testFreeMarker")  
+   public String testFreeMarker(HttpServletRequest request, HttpServletResponse response,
+		   ModelMap modelMap) throws Exception {
+	   
+	    modelMap.put("user", "csy");
+       
+       return "testFreeMarke.ftl";  
+   }  
+   
+   /***
+    * 保存用户
     * @param request
     * @param response
     * @param modelMap
@@ -102,7 +124,6 @@ public class UserController extends BaseController{
 	   
 	   user.setUserPwd("888888");
 	   if (userId==null||"".equals(userId)) {
-		   //�������
 		    save = userService.insterUser(user);
 	   }else {
 		   user.setUserId(Integer.parseInt(userId));
@@ -230,7 +251,7 @@ public class UserController extends BaseController{
 	   }
 	   
 	   
-       //�������
+       //根据id删除用户
        int updateUser = userService.deleteUserById(Integer.parseInt(userId));
 
        //modelMap.addAttribute("user", user);  
